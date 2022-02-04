@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+	 <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script> 
+    <script src="weather.js"> </script>
+ 
+    <link rel='stylesheet' href='./stylesheet/main.css'>
+    <link rel='stylesheet' href='./stylesheet/weather.css'>
+	<link rel='stylesheet' href='./stylesheet/contact.css'>
+
+	
+</head>
+
+<body>
+	<div class="cntweather">
+        <p class="city"></p>
+        <img class="icon">
+        <p class="weather"></p>
+        <p class="temp"></p>
+    </div>
+
+    <!-- Nav Bar -->
+    <nav id="navBar">
+        <ul class="inlNav">
+            
+            <li class="nav"><a href="index.html">Home</a></li>
+            <li class="nav"><a href="shop.html">Shop</a></li>
+            <li class="nav"><a href="about.html">About</a></li>
+            <li class="nav"><a href="contact.html">Contact</a></li>   
+        </ul>  
+     
+    </nav>
+	 
+	
+<!--------- Contact --------->
+	
+	<h1 class="section2">Contact Us</h1>
+	
+	 <div class="sec">
+      <div class="image">
+        <img src="images/9.png"  style="width:500px; height: 500px;">
+      </div>
+      <div class="text">
+        <h2>We’re Here for Any Question </h2>        
+        
+        <form id="studentForm">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="name" placeholder="Name"  required></td>
+                    <td rowspan="3"><textarea name="message" placeholder="Message" id="message" ></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" name="email" placeholder="Email" required></td>
+                </tr>
+                <tr>
+                    <td>Subject:</td>
+                    <td><input type="text" name="subject" placeholder="Subject" ></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><input type="submit" id="btn" class="cnt"  name="Send Data"></td>
+                </tr>
+            </table>
+        
+            <div id="messageDisplay" class="msg"></div>
+             
+        </form>
+            <p>Address<br>500 Terry Francois St.<br> SF, CA 94158</p>
+    </div>
+	</div>
+	
+	
+	
+	
+	   <script>
+        const messageDisplay = document.getElementById('messageDisplay');
+        const submit = document.querySelector('#submit');
+
+
+        document.querySelector('#studentForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        messageDisplay.innerHTML = ''
+        let name = document.querySelector('input[name="name"]')
+        let email = document.querySelector('input[name="email"]')
+        let subject = document.querySelector('input[name="subject"]')
+        let message = document.getElementById("message")
+        let data = 'name=' + name.value + '&email=' + email.value + '&subject=' + subject.value + '&message=' + message.value;
+        const xhr = new XMLHttpRequest();
+
+        if (name.value && email.value && subject.value && message.value) {
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    messageDisplay.innerHTML = xhr.response;
+                }
+            }
+            xhr.open('POST', 'http://localhost:3000/posts', true)
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            xhr.send(data)
+        }
+        name.value = null
+        email.value = null
+        subject.value = null
+        message.value = null
+        })
+
+    </script> 
+
+	
+	<!--------- Footer --------->
+		
+		
+ <div class="rw">
+  <div class="clm">
+    <div class="card">
+      <div class="container">
+     <p> <a href="index.html" target="_blank"><img src="images/logo.png" class ="logo" alt="logo" style="width:33.3%"></a></p>
+        <h2 id ="end">Flower Store</h2>
+            </div>
+    </div>
+  </div>
+
+
+
+  <div class="clm">
+    <div class="card">
+      <div class="container">
+        <h2 id ="end">Quick Menu</h2>
+        <p class="title"><a href="#">Home</a></p>
+        <p class="title"><a href="shop.html">Shop</a></p>
+        <p class="title"><a href="about.html">About</a></p>
+		  <p class="title"><a href="contact.html">Contact</a></p>
+
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="clm">
+    <div class="card">
+      <div class="container">
+        <h2 id ="end">Address</h2>
+        <p class="title">500 Terry Francois Street</p>
+        <p class="title">San Francisco, CA 94158</p>
+		       <p class="title"> <a href="https://www.instagram.com/wix/" target="_blank">Follow Us</p>
+
+		       
+
+      </div>
+    </div>
+  </div>
+</div>
+	
+    <footer id="footer"> © 2021 by Klea Rumbullaku. Proudly created for JSON Final Project </footer>
+
+
+
+    
+	
+</body>
+</html>

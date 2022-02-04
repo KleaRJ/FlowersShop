@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script> 
+    <script src="weather.js"> </script>
+ 
+    <link rel='stylesheet' href='./stylesheet/main.css'>
+    <link rel='stylesheet' href='./stylesheet/weather.css'>
+	    <link rel='stylesheet' href='./stylesheet/images.css'>
+		    <link rel='stylesheet' href='./stylesheet/shop.css'>
+
+
+
+</head>
+
+<body>
+	
+	<div class="cntweather">
+        <p class="city"></p>
+        <img class="icon">
+        <p class="weather"></p>
+        <p class="temp"></p>
+    </div>
+
+    <!-- Nav Bar -->
+    <nav id="navBar">
+        <ul class="inlNav">
+            
+            <li class="nav"><a href="index.html">Home</a></li>
+            <li class="nav"><a href="shop.html">Shop</a></li>
+            <li class="nav"><a href="about.html">About</a></li>
+            <li class="nav"><a href="contact.html">Contact</a></li>   
+        </ul>  
+     
+    </nav>
+	
+<!--------- Shop ---------- --------->
+<div class="button">
+  <div class="center">
+<button class="cnt" id="callData">Show all Collection</button>
+ </div>
+</div>
+
+
+        	<div class="main">
+
+    <div id ="output"></div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script>
+$(function(){
+    
+$('#callData').click(function(){
+    var url = 'https://spreadsheets.google.com/feeds/list/115RMnIBTz_IwO0wX9IHCVdoEi6u5k62etWQmZPhe5BY/od6/public/values?alt=json'
+  $.getJSON(url,function(data){
+            
+                var html = ''
+
+                $.each(data.feed.entry,function(key,val){
+                    console.log(val.gsx$photo.$t)
+                    console.log(val.gsx$product.$t)
+                    console.log(val.gsx$price.$t)
+                    
+
+                html += '<div>'+ 
+
+                '<img class="imgdisplay" id="display"  src="'+ val.gsx$photo.$t +'"/>' + 
+				 '<h1 class="prod">' + val.gsx$product.$t + ' </h1>'  +  '<h2 class="price">'+ val.gsx$price.$t + '</h2>' + '</div>' 
+                
+                })
+                $('#output').html(html); 
+        })
+        
+    });     
+});
+</script>
+            
+       </div>
+
+	
+	
+<!--------- Footer --------->
+		
+		<div class="rw">
+  <div class="clm">
+    <div class="card">
+      <div class="container">
+     <p> <a href="index.html" target="_blank"><img src="images/logo.png" class ="logo" alt="logo" style="width:33.3%"></a></p>
+        <h2 id ="end">Flower Store</h2>
+            </div>
+    </div>
+  </div>
+
+
+
+  <div class="clm">
+    <div class="card">
+      <div class="container">
+        <h2 id ="end">Quick Menu</h2>
+        <p class="title"><a href="#">Home</a></p>
+        <p class="title"><a href="shop.html">Shop</a></p>
+        <p class="title"><a href="about.html">About</a></p>
+		  <p class="title"><a href="contact.html">Contact</a></p>
+
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="clm">
+    <div class="card">
+      <div class="container">
+        <h2 id ="end">Address</h2>
+        <p class="title">500 Terry Francois Street</p>
+        <p class="title">San Francisco, CA 94158</p>
+		       <p class="title"> <a href="https://www.instagram.com/wix/" target="_blank">Follow Us</p>
+
+		       
+
+      </div>
+    </div>
+  </div>
+</div>
+	
+    <footer id="footer"> © 2021 by Klea Rumbullaku. Proudly created for JSON Final Project </footer>
+
+
+
+    
+	
+ 
+</body>
+</html>

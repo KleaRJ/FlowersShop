@@ -1,0 +1,33 @@
+
+	#callData {
+  background-color: rgba(228,207,190,.3); 
+  color: rgba(143,25,83,1); 
+  border: 2px solid rgba(143,25,83,1);
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 5px #999;
+  align-content: center;
+	
+}
+
+#callData:hover {
+  background-color: rgba(143,25,83,1);
+  color: white;
+}
+
+.prod , .price{
+	text-align: center;
+	width: 33.3%;
+	
+}
+
+.display  {
+    display:inline;
+}
+
